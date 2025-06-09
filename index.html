@@ -1,0 +1,863 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css"
+        integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="style.css">
+    <title>EcoSprout</title>
+</head>
+
+<body>
+
+    <!-- ==================MAIN======================= -->
+  <nav class="navbar">
+    <div class="logo">EcoSprout</div>
+    <div class="nav-links">
+      <a href="#home">Home</a>
+      <a href="#shop">Shop</a>
+      <a href="#blogs">Blogs</a>
+      <a href="#contact">Contact</a>
+    </div>
+    <div class="nav-icons">
+        <div class="cart-icon" id="cartIcon">
+            <i class="fa fa-shopping-cart"></i>
+            <span class="cart-count" id="cartCount">0</span>
+        </div>
+        <div class="menu-toggle" id="menuToggle"> <!-- NEW: Hamburger menu toggle -->
+            <i class="fas fa-bars"></i>
+        </div>
+        <a href="index1.html"><i class="fa-solid fa-circle-user"></i></a>
+    </div>
+  </nav>
+
+
+    <!-- Cart Modal/Sidebar -->
+  <div class="cart-modal" id="cartModal">
+    <div class="cart-header">
+      <h3>Your Cart</h3>
+      <span class="cart-close" id="cartClose">&times;</span>
+    </div>
+    <div class="cart-items" id="cartItems"></div>
+    <div class="cart-footer">
+      <div class="cart-total" id="cartTotal">Total: ₹0</div>
+      <button class="cart-buy-btn" id="cartBuyBtn">Proceed to Buy</button>
+    </div>
+  </div>
+
+  <!-- Checkout Modal -->
+  <div class="checkout-modal" id="checkoutModal">
+    <div class="checkout-header">
+      <h3>Shipping & Payment</h3>
+      <span class="checkout-close" id="checkoutClose">&times;</span>
+    </div>
+    <form class="checkout-body" id="checkoutForm">
+      <label for="address">Shipping Address</label>
+      <input type="text" id="address" name="address" placeholder="Enter your address" required>
+      <label for="payment">Payment Mode</label>
+      <select id="payment" name="payment" required>
+        <option value="">Select payment mode</option>
+        <option value="COD">Cash on Delivery</option>
+        <option value="Card">Credit/Debit Card</option>
+        <option value="UPI">UPI</option>
+      </select>
+      <button type="submit" class="checkout-next-btn">Confirm Order</button>
+    </form>
+  </div>
+
+  <!-- Confirmation Modal -->
+  <div class="confirm-modal" id="confirmModal">
+    <div class="confirm-header">
+      <h3>Order Confirmed!</h3>
+      <span class="confirm-close" id="confirmClose">&times;</span>
+    </div>
+    <div class="confirm-body" id="confirmBody"></div>
+    <div class="confirm-footer">
+      <button class="confirm-close-btn" id="confirmCloseBtn">Close</button>
+    </div>
+  </div>
+
+  <div class="hero-section" id="home">
+    <div class="hero-overlay"></div>
+    <div class="hero-content">
+      <h1>Welcome to EcoSprout <span>🌿</span></h1>
+      <div class="tagline">Sustainable Choices for a Greener Tomorrow</div>
+      <button class="shop-btn" onclick="window.location.href='#shop'"> Shop Now</button>
+    </div>
+  </div>
+
+    <!-- ==================Shop SECTION======================= -->
+
+ <section class="shop-section">
+  <h2 class="shop-title" id="shop">Our Sustainable Products</h2>
+
+  <!-- Row 1 -->
+  <div class="scroll-row">
+    <div class="product-card" data-name="Bamboo Toothbrush" data-price="99" data-img="img/Brush.png">
+      <img src="img/Brush.png" alt="Bamboo Toothbrush" loading="lazy">
+      <h3>Bamboo Toothbrush</h3>
+      <p class="desc">Biodegradable handle, gentle on teeth and planet.</p>
+      <div class="rating">★★★★☆</div>
+      <p class="price">₹99</p>
+      <button>Add to Cart</button>
+    </div>
+    <div class="product-card" data-name="Reusable Shopping Bag" data-price="149" data-img="img/Bag.png">
+      <img src="img/Bag.png" alt="Reusable Shopping Bag" loading="lazy">
+      <h3>Reusable Shopping Bag</h3>
+      <p class="desc">Sturdy cotton bag for eco-friendly shopping trips.</p>
+      <div class="rating">★★★★★</div>
+      <p class="price">₹149</p>
+      <button>Add to Cart</button>
+    </div>
+    <div class="product-card" data-name="Stainless Steel Water Bottle" data-price="399" data-img="img/Bottle.png">
+      <img src="img/Bottle.png" alt="Stainless Steel Water Bottle" loading="lazy">
+      <h3>Stainless Steel Water Bottle</h3>
+      <p class="desc">Keeps drinks cold or hot, reusable for years.</p>
+      <div class="rating">★★★★☆</div>
+      <p class="price">₹399</p>
+      <button>Add to Cart</button>
+    </div>
+    <div class="product-card" data-name="Organic Soap Bar" data-price="120" data-img="img/Soap.png">
+      <img src="img/soap.png" alt="Organic Soap Bar" loading="lazy">
+      <h3>Organic Soap Bar</h3>
+      <p class="desc">Handcrafted, gentle, and chemical-free cleansing.</p>
+      <div class="rating">★★★☆☆</div>
+      <p class="price">₹120</p>
+      <button>Add to Cart</button>
+    </div>
+    <div class="product-card" data-name="Eco-friendly Bamboo Straws" data-price="180" data-img="img/Straw.png">
+      <img src="img/Straw.png" alt="Eco-friendly Bamboo Straws" loading="lazy">
+      <h3>Eco-friendly Bamboo Straws</h3>
+      <p class="desc">Reusable, natural straws for sustainable sipping.</p>
+      <div class="rating">★★★★☆</div>
+      <p class="price">₹180</p>
+      <button>Add to Cart</button>
+    </div>
+    <div class="product-card" data-name="Reusable Cloth Napkins" data-price="250" data-img="img/Nap.png">
+      <img src="img/Nap.png" alt="Reusable Cloth Napkins" loading="lazy">
+      <h3>Reusable Cloth Napkins</h3>
+      <p class="desc">Soft, washable napkins for a zero-waste kitchen.</p>
+      <div class="rating">★★★★★</div>
+      <p class="price">₹250</p>
+      <button>Add to Cart</button>
+    </div>
+    <div class="product-card" data-name="Kitchen Compost Bin" data-price="499" data-img="img/Bin.png">
+      <img src="img/bin.png" alt="Kitchen Compost Bin" loading="lazy">
+      <h3>Kitchen Compost Bin</h3>
+      <p class="desc">Odor-free composting for kitchen food scraps.</p>
+      <div class="rating">★★★★☆</div>
+      <p class="price">₹499</p>
+      <button>Add to Cart</button>
+    </div>
+    <div class="product-card" data-name="Plantable Pencils (Pack of 5)" data-price="100" data-img="img/Pencils.png">
+      <img src="img/Pencils.png" alt="Plantable Pencils" loading="lazy">
+      <h3>Plantable Pencils (Pack of 5)</h3>
+      <p class="desc">Write, plant, and grow herbs or flowers.</p>
+      <div class="rating">★★★★☆</div>
+      <p class="price">₹100</p>
+      <button>Add to Cart</button>
+    </div>
+  </div>
+
+  <!-- Row 2 -->
+  <div class="scroll-row">
+    <div class="product-card" data-name="Neem Wood Comb" data-price="85" data-img="img/Comb.png">
+      <img src="img/Comb.png" alt="Neem Wood Comb" loading="lazy">
+      <h3>Neem Wood Comb</h3>
+      <p class="desc">Reduces hair fall, anti-bacterial, eco-friendly.</p>
+      <div class="rating">★★★☆☆</div>
+      <p class="price">₹85</p>
+      <button>Add to Cart</button>
+    </div>
+    <div class="product-card" data-name="Seed Bombs (Pack of 5)" data-price="99" data-img="img/seeds.png">
+      <img src="img/seeds.png" alt="Seed Bombs" loading="lazy">
+      <h3>Seed Bombs (Pack of 5)</h3>
+      <p class="desc">Throw and grow wildflowers, easy for all ages.</p>
+      <div class="rating">★★★☆☆</div>
+      <p class="price">₹99</p>
+      <button>Add to Cart</button>
+    </div>
+    <div class="product-card" data-name="Coconut Shell Bowl" data-price="160" data-img="img/Cup.png">
+      <img src="img/Cup.png" alt="Coconut Shell Bowl" loading="lazy">
+      <h3>Coconut Shell Bowl</h3>
+      <p class="desc">Handmade from real coconuts, unique and sturdy.</p>
+      <div class="rating">★★★★☆</div>
+      <p class="price">₹160</p>
+      <button>Add to Cart</button>
+    </div>
+    <div class="product-card" data-name="Soy Wax Eco Candles" data-price="250" data-img="img/Candle.png">
+      <img src="img/Candle.png" alt="Soy Wax Eco Candles" loading="lazy">
+      <h3>Soy Wax Eco Candles</h3>
+      <p class="desc">Natural soy wax, clean burn, calming scents.</p>
+      <div class="rating">★★★★★</div>
+      <p class="price">₹250</p>
+      <button>Add to Cart</button>
+    </div>
+    <div class="product-card" data-name="Eco-friendly Notebook" data-price="99" data-img="img/book.png">
+      <img src="img/book.png" alt="Eco-friendly Notebook" loading="lazy">
+      <h3>Eco-friendly Notebook</h3>
+      <p class="desc">100% recycled paper, perfect for notes and sketches.</p>
+      <div class="rating">★★★☆☆</div>
+      <p class="price">₹99</p>
+      <button>Add to Cart</button>
+    </div>
+    <div class="product-card" data-name="Biodegradable Food Wrap" data-price="130" data-img="img/foodwrap.png">
+      <img src="img/foodwrap.png" alt="Biodegradable Food Wrap" loading="lazy">
+      <h3>Biodegradable Food Wrap</h3>
+      <p class="desc">Plastic-free wraps to keep your food fresh.</p>
+      <div class="rating">★★★★☆</div>
+      <p class="price">₹130</p>
+      <button>Add to Cart</button>
+    </div>
+    <div class="product-card" data-name="Organic Cotton T-shirt" data-price="299" data-img="img/Tshirt.png">
+      <img src="img/tshirt.png" alt="Organic Cotton T-shirt" loading="lazy">
+      <h3>Organic Cotton T-shirt</h3>
+      <p class="desc">Soft, stylish, and made from organic cotton.</p>
+      <div class="rating">★★★★☆</div>
+      <p class="price">₹299</p>
+      <button>Add to Cart</button>
+    </div>
+  </div>
+
+  <!-- Row 3 -->
+  <div class="scroll-row">
+    <div class="product-card" data-name="Organic Facewash" data-price="180" data-img="img/Facewash.png">
+      <img src="img/facewash.png" alt="Organic Facewash" loading="lazy">
+      <h3>Organic Facewash</h3>
+      <p class="desc">Gentle herbal formula for fresh, clear skin.</p>
+      <div class="rating">★★★★☆</div>
+      <p class="price">₹180</p>
+      <button>Add to Cart</button>
+    </div>
+    <div class="product-card" data-name="Bamboo Earbuds (Pack of 80)" data-price="60" data-img="img/Buds.png">
+      <img src="img/Buds.png" alt="Bamboo Earbuds" loading="lazy">
+      <h3>Bamboo Earbuds (Pack of 80)</h3>
+      <p class="desc">Biodegradable and safe for everyday use.</p>
+      <div class="rating">★★★☆☆</div>
+      <p class="price">₹60</p>
+      <button>Add to Cart</button>
+    </div>
+    <div class="product-card" data-name="Eco-friendly Coffee Mug" data-price="199" data-img="img/Mug.png">
+      <img src="img/mug.png" alt="Eco-friendly Coffee Mug" loading="lazy">
+      <h3>Eco-friendly Coffee Mug</h3>
+      <p class="desc">Reusable mug made from natural materials.</p>
+      <div class="rating">★★★★☆</div>
+      <p class="price">₹199</p>
+      <button>Add to Cart</button>
+    </div>
+    <div class="product-card" data-name="Beeswax Food Wrap" data-price="150" data-img="img/beeswax.png">
+      <img src="img/beeswax.png" alt="Beeswax Food Wrap" loading="lazy">
+      <h3>Beeswax Food Wrap</h3>
+      <p class="desc">Natural beeswax wrap for keeping food fresh.</p>
+      <div class="rating">★★★★☆</div>
+      <p class="price">₹150</p>
+      <button>Add to Cart</button>
+    </div>
+    <div class="product-card" data-name="Compost Garbage Bags" data-price="120" data-img="img/Wastebag.png">
+      <img src="img/Wastebag.png" alt="Compost Garbage Bags" loading="lazy">
+      <h3>Compost Garbage Bags</h3>
+      <p class="desc">100% compostable bags for clean disposal.</p>
+      <div class="rating">★★★★☆</div>
+      <p class="price">₹120</p>
+      <button>Add to Cart</button>
+    </div>
+    <div class="product-card" data-name="Coir Utensil Brush" data-price="110" data-img="img/Dishwash.png">
+      <img src="img/Dishwash.png" alt="Coir Utensil Brush" loading="lazy">
+      <h3>Coir Utensil Brush</h3>
+      <p class="desc">Natural coir bristles for effective cleaning.</p>
+      <div class="rating">★★★☆☆</div>
+      <p class="price">₹110</p>
+      <button>Add to Cart</button>
+    </div>
+    <div class="product-card" data-name="Natural Perfume" data-price="350" data-img="img/Perfume.png">
+      <img src="img/perfume.png" alt="Natural Perfume" loading="lazy">
+      <h3>Natural Perfume</h3>
+      <p class="desc">Made from essential oils, no synthetic chemicals.</p>
+      <div class="rating">★★★★☆</div>
+      <p class="price">₹350</p>
+      <button>Add to Cart</button>
+    </div>
+  </div>
+<!-- Row 4 -->
+<div class="scroll-row">
+  <div class="product-card" data-name="Jute Table Mat" data-price="180" data-img="img/jutemat.png">
+    <img src="img/jutemat.png" alt="Jute Table Mat" loading="lazy">
+    <h3>Jute Table Mat</h3>
+    <p class="desc">Handwoven, biodegradable, and stylish for your table.</p>
+    <div class="rating">★★★★☆</div>
+    <p class="price">₹180</p>
+    <button>Add to Cart</button>
+  </div>
+  <div class="product-card" data-name="Recycled Paper Notebook" data-price="75" data-img="img/recyclepaper.png">
+    <img src="img/recyclepaper.png" alt="Recycled Paper Notebook" loading="lazy">
+    <h3>Recycled Paper Notebook</h3>
+    <p class="desc">100% recycled paper, perfect for notes and sketches.</p>
+    <div class="rating">★★★☆☆</div>
+    <p class="price">₹75</p>
+    <button>Add to Cart</button>
+  </div>
+  <div class="product-card" data-name="Palm Leaf Plates (Pack of 10)" data-price="199" data-img="img/plate.png">
+    <img src="img/plate.png" alt="Palm Leaf Plates" loading="lazy">
+    <h3>Palm Leaf Plates (Pack of 10)</h3>
+    <p class="desc">Sturdy, compostable, and chemical-free dinnerware.</p>
+    <div class="rating">★★★★☆</div>
+    <p class="price">₹199</p>
+    <button>Add to Cart</button>
+  </div>
+  <div class="product-card" data-name="Cotton Kitchen Towel" data-price="110" data-img="img/handkin.png">
+    <img src="img/handkin.png" alt="Cotton Kitchen Towel" loading="lazy">
+    <h3>Cotton Kitchen Towel</h3>
+    <p class="desc">Super absorbent, reusable, and machine washable.</p>
+    <div class="rating">★★★☆☆</div>
+    <p class="price">₹110</p>
+    <button>Add to Cart</button>
+  </div>
+  <div class="product-card" data-name="Eco Dish Scrubber" data-price="55" data-img="img/scrub.png">
+    <img src="img/scrub.png" alt="Eco Dish Scrubber" loading="lazy">
+    <h3>Eco Dish Scrubber</h3>
+    <p class="desc">Natural fiber scrubber for sparkling clean dishes.</p>
+    <div class="rating">★★★☆☆</div>
+    <p class="price">₹55</p>
+    <button>Add to Cart</button>
+  </div>
+  <div class="product-card" data-name="" data-price="220" data-img="img/wrap.png">
+    <img src="img/wrap.png" alt="Reusable Food Wraps" loading="lazy">
+    <h3>Reusable Food Wraps</h3>
+    <p class="desc">Beeswax wraps to keep your food fresh, plastic-free.</p>
+    <div class="rating">★★★★☆</div>
+    <p class="price">₹220</p>
+    <button>Add to Cart</button>
+  </div>
+  <div class="product-card" data-name="Foldable Shopping Tote" data-price="220" data-img="img/tote.png">
+    <img src="img/tote.png" alt="Foldable Shopping Tote" loading="lazy">
+    <h3>Foldable Shopping Tote</h3>
+    <p class="desc">Compact, lightweight, and easy to carry anywhere.</p>
+    <div class="rating">★★★★★</div>
+    <p class="price">₹220</p>
+    <button>Add to Cart</button>
+  </div>
+  <div class="product-card" data-name="Charcoal Detox Soap" data-price="140" data-img="img/coalsoap.png">
+    <img src="img/coalsoap.png" alt="Charcoal Detox Soap" loading="lazy">
+    <h3>Charcoal Detox Soap</h3>
+    <p class="desc">Activated charcoal for deep cleansing and detox.</p>
+    <div class="rating">★★★★☆</div>
+    <p class="price">₹140</p>
+    <button>Add to Cart</button>
+  </div>
+</div>
+
+<!-- Row 5 -->
+<div class="scroll-row">
+  <div class="product-card" data-name="Tongue Cleaner" data-price="60" data-img="img/toungecleaner.png">
+    <img src="img/toungecleaner.png" alt="Tongue Cleaner" loading="lazy">
+    <h3>Tongue Cleaner (Stainless Steel)</h3>
+    <p class="desc">Rust-free, reusable, and hygienic oral care.</p>
+    <div class="rating">★★★★☆</div>
+    <p class="price">₹60</p>
+    <button>Add to Cart</button>
+  </div>
+  <div class="product-card" data-name="Produce Bags (Set of 3)" data-price="110" data-img="img/producebag.png">
+    <img src="img/producebag.png" alt="Produce Bags" loading="lazy">
+    <h3>Produce Bags (Set of 3)</h3>
+    <p class="desc">Breathable mesh bags for fruits and vegetables.</p>
+    <div class="rating">★★★★★</div>
+    <p class="price">₹110</p>
+    <button>Add to Cart</button>
+  </div>
+  <div class="product-card" data-name="Bamboo Toothbrush" data-price="65" data-img="img/Brush.png">
+    <img src="img/bowls.png" alt="Areca Leaf Bowl" loading="lazy">
+    <h3>Areca Leaf Bowl</h3>
+    <p class="desc">Disposable, compostable, and chemical-free bowls.</p>
+    <div class="rating">★★★★☆</div>
+    <p class="price">₹65</p>
+    <button>Add to Cart</button>
+  </div>
+  <div class="product-card" data-name="Aloe Vera Soap Bar" data-price="90" data-img="img/aloverasoap.png">
+    <img src="img/aloverasoap.png" alt="Aloe Vera Soap Bar" loading="lazy">
+    <h3>Aloe Vera Soap Bar</h3>
+    <p class="desc">Moisturizing, soothing, and natural skin care.</p>
+    <div class="rating">★★★★☆</div>
+    <p class="price">₹90</p>
+    <button>Add to Cart</button>
+  </div>
+  <div class="product-card" data-name="Bottle Cleaning Brush" data-price="70" data-img="img/bottle cleaner.png">
+    <img src="img/bottle cleaner.png" alt="Bottle Cleaning Brush" loading="lazy">
+    <h3>Bottle Cleaning Brush</h3>
+    <p class="desc">Long handle, coconut bristles, plastic-free.</p>
+    <div class="rating">★★★☆☆</div>
+    <p class="price">₹70</p>
+    <button>Add to Cart</button>
+  </div>
+  <div class="product-card" data-name="Insulated Lunch Bag" data-price="199" data-img="img/lunchbag.png">
+    <img src="img/lunchbag.png" alt="Lunch Bag" loading="lazy">
+    <h3>Insulated Lunch Bag</h3>
+    <p class="desc">Keeps food fresh, washable, and reusable.</p>
+    <div class="rating">★★★★☆</div>
+    <p class="price">₹199</p>
+    <button>Add to Cart</button>
+  </div>
+  <div class="product-card" data-name="Jute Gift Bag" data-price="120" data-img="img/jutebag.png">
+    <img src="img/jutebag.png" alt="Jute Gift Bag" loading="lazy">
+    <h3>Jute Gift Bag</h3>
+    <p class="desc">Perfect for gifting, reusable and biodegradable.</p>
+    <div class="rating">★★★★★</div>
+    <p class="price">₹120</p>
+    <button>Add to Cart</button>
+  </div>
+</div>
+</section>
+
+<!-- ==================OUR BLOGS======================= -->
+
+<section class="blog-section" >
+  <div class="blog-header" id="blogs">
+    <h2>🌿 Our Eco Blog</h2>
+<link rel="stylesheet" href="blog.css">
+
+    <p>Get inspired by green living tips, product stories, and sustainability news!</p>
+  </div>
+  <div class="blog-cards">
+    <!-- Original 3 blogs -->
+    <article class="blog-card">
+      <div class="blog-img" style="background-image:url('https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=600&q=80');"></div>
+      <div class="blog-content">
+        <h3>Eco-Friendly Home Hacks</h3>
+        <span class="blog-date">June 5, 2025</span>
+        <p>Transform your living space with these simple, sustainable swaps that help the planet and your wallet!</p>
+        <a href="https://nelda.org.in/eco-friendly-lifestyle-hacks/" target="_blank">Read More</a>
+      </div>
+    </article>
+    <article class="blog-card">
+      <div class="blog-img" style="background-image:url('https://images.unsplash.com/photo-1464983953574-0892a716854b?auto=format&fit=crop&w=600&q=80');"></div>
+      <div class="blog-content">
+        <h3>Zero Waste: Top 5 Must-Haves</h3>
+        <span class="blog-date">May 28, 2025</span>
+        <p>Discover our favorite zero-waste essentials for a greener lifestyle—practical, stylish, and planet-friendly.</p>
+        <a href="https://www.tamborasi.com/zero-waste-must-haves/" target="_blank">Read More</a>
+      </div>
+    </article>
+    <article class="blog-card">
+      <div class="blog-img" style="background-image:url('https://images.unsplash.com/photo-1515378791036-0648a3ef77b2?auto=format&fit=crop&w=600&q=80');"></div>
+      <div class="blog-content">
+        <h3>Sustainable Fashion Trends</h3>
+        <span class="blog-date">May 15, 2025</span>
+        <p>Explore the latest in eco-conscious fashion—materials, brands, and tips for a guilt-free wardrobe.</p>
+        <a href="https://www.genevaenvironmentnetwork.org/resources/updates/sustainable-fashion/" target="_blank">Read More</a>
+      </div>
+    </article>
+    <article class="blog-card">
+      <div class="blog-img" style="background-image:url('https://images.unsplash.com/photo-1465101046530-73398c7f28ca?auto=format&fit=crop&w=600&q=80');"></div>
+      <div class="blog-content">
+        <h3>Innovations in Eco-Friendly Home Décor</h3>
+        <span class="blog-date">April 30, 2025</span>
+        <p>Discover the latest trends in sustainable home décor, from upcycled wood keyholders to eco-friendly vases and dreamcatchers. Make your living space stylish and planet-friendly!</p>
+        <a href="https://www.almadeluce.com/blog/sustainable-materials-in-decoration-4-innovative-solutions-you-may-not-know-about/" target="_blank">Read More</a>
+      </div>
+    </article>
+    <article class="blog-card">
+      <div class="blog-img" style="background-image:url('https://images.unsplash.com/photo-1504196606672-aef5c9cefc92?auto=format&fit=crop&w=600&q=80');"></div>
+      <div class="blog-content">
+        <h3>Smart Home Tech for a Greener Tomorrow</h3>
+        <span class="blog-date">April 15, 2025</span>
+        <p>Explore how smart thermostats, energy-efficient lighting, and solar-powered gadgets are making sustainable living easier and more convenient than ever before.</p>
+        <a href="https://www.rusehome.com/smart-home-automation-blogs-articles/smart-home-automation-for-a-greener-sustainable-future#:~:text=Smart%20home%20automation%20not%20only,technology%20is%20revolutionizing%20sustainable%20living." target="_blank">Read More</a>
+      </div>
+    </article>
+    <article class="blog-card">
+      <div class="blog-img" style="background-image:url('https://images.unsplash.com/photo-1502082553048-f009c37129b9?auto=format&fit=crop&w=600&q=80');"></div>
+      <div class="blog-content">
+        <h3>The Rise of Circular Economy: Upcycling & Zero Waste</h3>
+        <span class="blog-date">March 28, 2025</span>
+        <p>Learn how circular economy models, upcycled products, and zero-waste shops are revolutionizing the way we consume, reuse, and recycle in 2025.</p>
+        <a href="https://www.ellenmacarthurfoundation.org/topics/circular-economy-introduction/overview" target="_blank">Read More</a>
+      </div>
+    </article>
+  </div>
+  <div class="eco-tip-generator">
+      <h3>Need an Eco Tip?</h3>
+      <button id="generateEcoTipBtn" class="generate-tip-btn">✨ Get a New Eco Tip!</button>
+      <div id="ecoTipDisplay" class="eco-tip-display">Click the button above to get a random eco-friendly tip!</div>
+  </div>
+  <div class="blog-footer">
+    <p>🌸 Follow us for more green inspiration!</p>
+  </div>
+</section>
+
+
+<!-- ==================CONTACT US SECTİON======================= -->
+
+<section  class="contact">
+    <div class="container">
+    <h1 class="sub-title subt" id="contact">CONTACT US</h1>
+    <div class="container contact-wrapper" id="contact">
+        <div class="contact-info">
+            <h2>Get in Touch</h2>
+            <p>Feel free to reach out to us for any quaries.</p>
+            <div class="details">
+                <div class="contact-item">
+                    <i class="fas fa-envelope"></i>
+                    <a href="mailto:nandakishorereddychikkem2507@gmail.com">Mail</a>
+                </div>
+                <div class="contact-item">
+                   
+                </div>
+                <div class="contact-item">
+                    
+                </div>
+            </div>
+        </div>
+
+        <div class="contact-form">
+            <h2>Send a Message</h2>
+            <form class="form" name="submit-to-google-sheet">
+                <div class="form-item">
+                    <label for="name">Your Name</label>
+                    <input type="text" id="name" name="Name" placeholder="Enter your name" required>
+                </div>
+                <div class="form-item">
+                    <label for="email">Your Email</label>
+                    <input type="email" id="email" name="Email" placeholder="Enter your email" required>
+                </div>
+                <div class="form-item">
+                    <label for="message">Your Message</label>
+                    <textarea id="message" name="Message" placeholder="Type your message" rows="5" required></textarea>
+                </div>
+                <button type="submit" class="contact-btn">Submit</button>
+            </form>
+            <span id="msg"></span>
+        </div>
+    </div>
+    </div>
+</section>
+
+  <!-- Order Status Section -->
+  <section id="orderStatusSection">
+    <h2>Order Details & Tracking</h2>
+    <div id="orderDetails"></div>
+    <div>
+      <label>Order Tracking:</label>
+      <div id="orderTracking">
+        <div><span id="trackStatus">Order Placed</span></div>
+        <progress id="trackProgress" value="1" max="4"></progress>
+        <div style="display:flex;justify-content:space-between;font-size:0.97rem;margin-top:4px;">
+          <span>Placed</span>
+          <span>Packed</span>
+          <span>Shipped</span>
+          <span>Delivered</span>
+        </div>
+      </div>
+      <button id="nextTrackBtn">Update Tracking</button>
+    </div>
+  </section>
+
+    <!-- ==================FOOTER======================= -->
+    <footer class="footer">
+        <div class="container">
+            <div class="menu-bottom">
+                <ul>
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#shop">Shop</a></li>
+                    <li><a href="#blogs">Blogs</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </div>
+            <div class="author">
+                <p>| All Right Reserved To EcoSprout.|</p>
+            </div>
+        </div>
+    </footer>
+
+
+
+
+<script>
+    const scriptURL = 'https://script.google.com/macros/s/AKfycbzWfxLVE_y3Jtt9ERIezkEGXB-Ap_4s6NcOQbO4-mrh5j0NKqb3BqntmG2sR2_CkSdiBA/exec'
+    const form = document.forms['submit-to-google-sheet']
+    const msg = document.getElementById("msg")
+  
+    form.addEventListener('submit', e => {
+      e.preventDefault()
+      fetch(scriptURL, { method: 'POST', body: new FormData(form)})
+        .then(response => {
+            msg.innerHTML = "Submitted Successfully"
+            setTimeout(function(){
+                msg.innerHTML = ""
+            },5000)
+            form.reset()
+        })
+        .catch(error => console.error('Error!', error.message))
+    })
+  </script>
+ 
+  <script>
+    // Cart logic
+    let cart = [];
+    const cartCountSpan = document.getElementById('cartCount');
+    const cartModal = document.getElementById('cartModal');
+    const cartIcon = document.getElementById('cartIcon');
+    const cartClose = document.getElementById('cartClose');
+    const cartItemsDiv = document.getElementById('cartItems');
+    const cartTotalDiv = document.getElementById('cartTotal');
+    const cartBuyBtn = document.getElementById('cartBuyBtn');
+    // Checkout
+    const checkoutModal = document.getElementById('checkoutModal');
+    const checkoutClose = document.getElementById('checkoutClose');
+    const checkoutForm = document.getElementById('checkoutForm');
+    // Confirmation
+    const confirmModal = document.getElementById('confirmModal');
+    const confirmClose = document.getElementById('confirmClose');
+    const confirmCloseBtn = document.getElementById('confirmCloseBtn');
+    const confirmBody = document.getElementById('confirmBody');
+    // Order status
+    const orderStatusSection = document.getElementById('orderStatusSection');
+    const orderDetails = document.getElementById('orderDetails');
+    const trackProgress = document.getElementById('trackProgress');
+    const trackStatus = document.getElementById('trackStatus');
+    const nextTrackBtn = document.getElementById('nextTrackBtn');
+    const trackingStages = ['Order Placed', 'Packed', 'Shipped', 'Delivered'];
+    let trackStep = 1;
+
+    // Open cart
+    cartIcon.addEventListener('click', () => {
+      cartModal.classList.add('open');
+      renderCart();
+    });
+    // Close cart
+    cartClose.addEventListener('click', () => {
+      cartModal.classList.remove('open');
+    });
+
+    // Add to Cart buttons
+    document.querySelectorAll('.product-card button').forEach(btn => {
+      btn.addEventListener('click', function() {
+        const card = btn.closest('.product-card');
+        const name = card.getAttribute('data-name');
+        const price = parseInt(card.getAttribute('data-price'));
+        const img = card.getAttribute('data-img');
+        addToCart({ name, price, img });
+      });
+    });
+
+    function addToCart(product) {
+      const idx = cart.findIndex(item => item.name === product.name);
+      if (idx > -1) {
+        cart[idx].qty += 1;
+      } else {
+        cart.push({ ...product, qty: 1 });
+      }
+      updateCartCount();
+      renderCart();
+    }
+
+    function removeFromCart(name) {
+      cart = cart.filter(item => item.name !== name);
+      updateCartCount();
+      renderCart();
+    }
+
+    function updateCartCount() {
+      let count = cart.reduce((sum, item) => sum + item.qty, 0);
+      cartCountSpan.textContent = count;
+    }
+
+    function renderCart() {
+      cartItemsDiv.innerHTML = '';
+      let total = 0;
+      if (cart.length === 0) {
+        cartItemsDiv.innerHTML = '<p style="color:#888;text-align:center;margin-top:32px;">Your cart is empty.</p>';
+      }
+      cart.forEach(item => {
+        total += item.price * item.qty;
+        const div = document.createElement('div');
+        div.className = 'cart-item';
+        div.innerHTML = `
+          <img src="${item.img}" alt="${item.name}">
+          <div class="cart-item-details">
+            <div class="cart-item-title">${item.name}</div>
+            <div class="cart-item-price">₹${item.price}</div>
+            <div class="cart-item-qty">Qty: ${item.qty}</div>
+          </div>
+          <button class="cart-item-remove" title="Remove">&times;</button>
+        `;
+        div.querySelector('.cart-item-remove').onclick = () => removeFromCart(item.name);
+        cartItemsDiv.appendChild(div);
+      });
+      cartTotalDiv.textContent = 'Total: ₹' + total;
+    }
+
+    // Buy button
+    cartBuyBtn.addEventListener('click', () => {
+      if (cart.length === 0) {
+        alert('Your cart is empty!');
+        return;
+      }
+      cartModal.classList.remove('open');
+      checkoutModal.classList.add('open');
+    });
+
+    // Close checkout modal
+    checkoutClose.addEventListener('click', () => {
+      checkoutModal.classList.remove('open');
+    });
+
+    // Checkout form submit
+    checkoutForm.addEventListener('submit', function(e) {
+      e.preventDefault();
+      const address = checkoutForm.address.value.trim();
+      const payment = checkoutForm.payment.value;
+      if (!address || !payment) return;
+      checkoutModal.classList.remove('open');
+      showConfirmation(address, payment);
+      // Save order details for tracking
+      window._lastOrder = {
+        items: [...cart],
+        address,
+        payment,
+        orderId: Math.floor(Math.random()*90000+10000)
+      };
+      cart = [];
+      updateCartCount();
+      renderCart();
+      checkoutForm.reset();
+    });
+
+    // Confirmation modal
+    function showConfirmation(address, payment) {
+      confirmBody.innerHTML = `
+        <div>Thank you for your order!</div>
+        <div class="confirm-order-list">
+          <strong>Order Summary:</strong><br>
+          ${cart.map(item => `${item.name} x${item.qty} - ₹${item.price * item.qty}`).join('<br>')}
+        </div>
+        <div><strong>Shipping Address:</strong><br>${address}</div>
+        <div><strong>Payment Mode:</strong> ${payment}</div>
+        <div style="color:#388e3c;font-weight:bold;">Your order has been placed and will be shipped soon.</div>
+      `;
+      confirmModal.classList.add('open');
+    }
+
+    // Show order status section after confirmation modal is closed
+    function showOrderStatus() {
+      if (window._lastOrder) {
+        orderDetails.innerHTML = `
+          <div><strong>Items:</strong><br>${window._lastOrder.items.map(item => `${item.name} x${item.qty} - ₹${item.price * item.qty}`).join('<br>')}</div>
+          <div style="margin-top:10px;"><strong>Shipping Address:</strong> ${window._lastOrder.address}</div>
+          <div><strong>Payment Mode:</strong> ${window._lastOrder.payment}</div>
+          <div><strong>Order ID:</strong> #${window._lastOrder.orderId}</div>
+        `;
+        // Reset tracking
+        trackStep = 1;
+        trackProgress.value = 1;
+        trackStatus.textContent = trackingStages[0];
+        nextTrackBtn.disabled = false;
+        nextTrackBtn.textContent = "Update Tracking";
+        nextTrackBtn.style.background = "linear-gradient(90deg, #60d394 0%, #24936e 100%)";
+      }
+      orderStatusSection.style.display = 'block';
+    }
+
+    // Tracking logic
+    nextTrackBtn.addEventListener('click', () => {
+      if (trackStep < 4) {
+        trackStep++;
+        trackProgress.value = trackStep;
+        trackStatus.textContent = trackingStages[trackStep - 1];
+        if (trackStep === 4) {
+          nextTrackBtn.disabled = true;
+          nextTrackBtn.textContent = "Delivered";
+          nextTrackBtn.style.background = "#388e3c";
+        }
+      }
+    });
+
+    // Show order status section after confirmation modal is closed
+    confirmClose.addEventListener('click', () => {
+      confirmModal.classList.remove('open');
+      showOrderStatus();
+    });
+    confirmCloseBtn.addEventListener('click', () => {
+      confirmModal.classList.remove('open');
+      showOrderStatus();
+    });
+
+    
+
+  </script>
+
+
+<script>
+    // NEW: Eco Tip Generator elements
+    const generateEcoTipBtn = document.getElementById('generateEcoTipBtn');
+    const ecoTipDisplay = document.getElementById('ecoTipDisplay');
+
+    // NEW: Function to fetch eco tip from Gemini API
+    async function fetchEcoTip() {
+        ecoTipDisplay.textContent = 'Generating a tip...';
+        ecoTipDisplay.classList.add('loading');
+        generateEcoTipBtn.disabled = true; // Disable button while loading
+
+        let chatHistory = [];
+        chatHistory.push({ role: "user", parts: [{ text: "Give me a single, concise, actionable eco-friendly tip for daily living. Make it engaging and easy to understand. Start directly with the tip." }] });
+        const payload = { contents: chatHistory };
+        const apiKey = ""; // Canvas will automatically provide API key here
+        const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${apiKey}`;
+
+        try {
+            const response = await fetch(apiUrl, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(payload)
+            });
+            const result = await response.json();
+
+            if (result.candidates && result.candidates.length > 0 &&
+                result.candidates[0].content && result.candidates[0].content.parts &&
+                result.candidates[0].content.parts.length > 0) {
+                const text = result.candidates[0].content.parts[0].text;
+                ecoTipDisplay.textContent = text;
+                ecoTipDisplay.classList.remove('error');
+            } else {
+                ecoTipDisplay.textContent = 'Failed to get a tip. Please try again.';
+                ecoTipDisplay.classList.add('error');
+                console.error('Gemini API response structure unexpected:', result);
+            }
+        } catch (error) {
+            ecoTipDisplay.textContent = 'Error connecting to the tip generator. Please check your network and try again.';
+            ecoTipDisplay.classList.add('error');
+            console.error('Error fetching eco tip:', error);
+        } finally {
+            ecoTipDisplay.classList.remove('loading');
+            generateEcoTipBtn.disabled = false; // Re-enable button
+        }
+    }
+
+    // NEW: Add event listener for the Eco Tip button
+    generateEcoTipBtn.addEventListener('click', fetchEcoTip);
+
+</script>
+
+<script>
+    // NEW: Hamburger menu elements
+    const menuToggle = document.getElementById('menuToggle');
+    const navLinks = document.querySelector('.nav-links');
+
+    // NEW: Toggle mobile menu
+    menuToggle.addEventListener('click', () => {
+        navLinks.classList.toggle('active');
+    });
+
+    // NEW: Close mobile menu when a navigation link is clicked
+    navLinks.querySelectorAll('a').forEach(link => {
+        link.addEventListener('click', () => {
+            navLinks.classList.remove('active');
+        });
+    });
+
+</script>
+
+</body>
+</html>

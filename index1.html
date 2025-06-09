@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Login / Register</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: 
+        linear-gradient(rgba(34, 49, 63, 0.65), rgba(34, 49, 63, 0.65)),
+        url('https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=1470&q=80') no-repeat center center fixed;
+      background-size: cover;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 40px 20px;
+    }
+
+    /* Breadcrumb */
+    .breadcrumb {
+      background: rgba(255,255,255,0.13);
+      border-radius: 12px;
+      padding: 10px 20px;
+      margin-bottom: 40px;
+      font-weight: 600;
+      font-size: 1rem;
+      display: flex;
+      gap: 8px;
+      color: #a0d8ef;
+      user-select: none;
+      max-width: 400px;
+      width: 100%;
+      justify-content: center;
+      box-shadow: 0 4px 12px rgb(0 0 0 / 0.25);
+    }
+    .breadcrumb a {
+      color: #81d4fa;
+      text-decoration: none;
+      transition: color 0.3s;
+    }
+    .breadcrumb a:hover {
+      color: #4fc3f7;
+    }
+    .breadcrumb span {
+      color: #b3e5fc;
+    }
+
+    /* Container for forms */
+    .login-register__container {
+      background: rgba(255,255,255,0.10);
+      backdrop-filter: blur(12px);
+      border-radius: 24px;
+      box-shadow: 0 8px 32px rgb(0 0 0 / 0.3);
+      max-width: 900px;
+      width: 100%;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 48px;
+      padding: 48px 40px;
+      color: #e0f2f1;
+    }
+    @media (max-width: 800px) {
+      .login-register__container {
+        grid-template-columns: 1fr;
+        padding: 32px 24px;
+        gap: 32px;
+      }
+    }
+
+    /* Titles */
+    .section__title {
+      font-size: 2rem;
+      font-weight: 700;
+      margin-bottom: 24px;
+      text-align: center;
+      color: #b2dfdb;
+      letter-spacing: 1px;
+      text-shadow: 0 2px 8px #004d4044;
+    }
+
+    /* Forms */
+    form {
+      display: flex;
+      flex-direction: column;
+      gap: 18px;
+    }
+    input.form__input {
+      padding: 14px 18px;
+      font-size: 1rem;
+      border-radius: 10px;
+      border: none;
+      outline: none;
+      background: rgba(255,255,255,0.25);
+      color: #004d40;
+      box-shadow: inset 0 0 8px rgb(0 0 0 / 0.15);
+      transition: background 0.3s ease;
+    }
+    input.form__input::placeholder {
+      color: #80cbc4;
+      opacity: 1;
+    }
+    input.form__input:focus {
+      background: rgba(255,255,255,0.45);
+      box-shadow: 0 0 12px #66aaff;
+      color: #00332e;
+    }
+
+    /* Buttons */
+    .form__btn {
+      text-align: center;
+    }
+    button.btn {
+      background: linear-gradient(90deg, #00796b 0%, #004d40 100%);
+      border: none;
+      border-radius: 30px;
+      padding: 14px 48px;
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: #e0f7fa;
+      cursor: pointer;
+      box-shadow: 0 6px 20px rgb(102 170 255 / 0.4);
+      transition: background 0.3s, transform 0.2s;
+      user-select: none;
+    }
+    button.btn:hover {
+      background: linear-gradient(90deg, #004d40 0%, #00796b 100%);
+      color: #a7ffeb;
+      transform: scale(1.05);
+    }
+  </style>
+</head>
+<body>
+  <nav class="breadcrumb" aria-label="breadcrumb">
+    <a href="index.html">Home</a>
+    <span>&gt;</span>
+    <span>Login</span>
+  </nav>
+
+  <section class="login-register__container" aria-label="Login and Register Forms">
+    <div class="login">
+      <h2 class="section__title">Login</h2>
+      <form action="" method="post" autocomplete="on" aria-label="Login form">
+        <input type="email" name="email" placeholder="Your Email" class="form__input" required />
+        <input type="password" name="password" placeholder="Your Password" class="form__input" required />
+        <div class="form__btn">
+          <button type="submit" class="btn">Login</button>
+        </div>
+      </form>
+    </div>
+
+    <div class="register">
+      <h2 class="section__title">Create an Account</h2>
+      <form action="" method="post" autocomplete="on" aria-label="Registration form">
+        <input type="text" name="username" placeholder="Username" class="form__input" required />
+        <input type="email" name="email" placeholder="Your Email" class="form__input" required />
+        <input type="password" name="password" placeholder="Your Password" class="form__input" required />
+        <input type="password" name="confirm_password" placeholder="Confirm Password" class="form__input" required />
+        <div class="form__btn">
+          <button type="submit" class="btn">Submit & Register</button>
+        </div>
+      </form>
+    </div>
+  </section>
+</body>
+</html>
